@@ -11,13 +11,13 @@ app.AppView = Backbone.View.extend ({
     el: '#todoapp',
     
     // Our template for the line of statistics at the bottom of the app
-    statsTemplate: _.template($('stats-template').html()),
+    statsTemplate: _.template( $('#stats-template').html() ),
     
     // Delegated events for creating new items, and clearing completed ones
     events: {
         'keypress #new-todo': 'createOnEnter',
         'click #clear-completed': 'clearCompleted',
-        'click #toggle-all:' 'toggleAllComplete'
+        'click #toggle-all': 'toggleAllComplete'
     },
     
     
@@ -86,7 +86,7 @@ app.AppView = Backbone.View.extend ({
     // Generate the attributes for a new todo item
     newAttributes: function() {
         return {
-            title: this.$input.val().trim();
+            title: this.$input.val().trim(),
             order: app.Todos.nextOrder(),
             completed: false
         };
@@ -94,7 +94,7 @@ app.AppView = Backbone.View.extend ({
     
     // If you hit return in the main input field, create new Todo model
     // persisting it to localStorage
-    createOnEnter : fucntion(event) {
+    createOnEnter : function(event) {
         if (event.which !== ENTER.KEY || !this.$input.val().trim()) {
             return;
         }
@@ -105,14 +105,14 @@ app.AppView = Backbone.View.extend ({
         
     // Clear all completed todo items, destroying their models
     clearCompleted : function() {
-        ._invoke(app.Todos.completed(), 'destroy')
+        _.invoke(app.Todos.completed(), 'destroy')
         return false;
     },
         
     toggleAllComplete : function() {
         var completed = this.allCheckbox.checked;
         
-        app.Todos.each(function(todo)) {
+        app.Todos.each(function(todo) {
             todo.save({
                 'completed' : completed
             });
