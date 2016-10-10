@@ -30,7 +30,7 @@ app.TodoView = Backbone.View.extend({
     // Re-renders the titles of the todo item
     render: function () {
         this.$el.html( this.template( this.model.attributes ));
-        this.$input = this.$('edit');
+        this.$input = this.$('.edit');
         return this;
     },
     
