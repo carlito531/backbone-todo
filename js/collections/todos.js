@@ -22,7 +22,7 @@ var TodoList = Backbone.Collection.extend({
     },
                                           
     remaining: function() {
-        return this.whithout.apply(this, this.completed());
+        return this.without.apply(this, this.completed());
     },
         
     // We keep the Todos in sequential order, despite being saved by unordered
